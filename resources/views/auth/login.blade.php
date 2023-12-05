@@ -1,0 +1,146 @@
+{{-- <x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div class="">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+
+           <button type="submit" style="border-radius: 100px;
+          background: linear-gradient(277deg, #8A0103 -10.36%, #8A0103 133.23%);
+           box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25) inset!important;
+           border:none!important;color:white;width:30%;margin:10px;padding:8px;">Login</button>
+        </div>
+    </form>
+</x-guest-layout> --}}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <style>
+        @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+    .login-block{
+        background: #DE6262;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #000000, #8a0103); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    float:left;
+    width:100%;
+    padding : 50px 0;
+    height: 100vh;
+    }
+    .banner-sec{background:url(https://static.pexels.com/photos/33972/pexels-photo.jpg)  no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
+    .container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+    .carousel-inner{border-radius:0 10px 10px 0;}
+    .carousel-caption{text-align:left; left:5%;}
+    .login-sec{padding: 50px 30px; position:relative;}
+    .login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+    .login-sec .copy-text i{color:#FEB58A;}
+    .login-sec .copy-text a{color:#E36262;}
+    .login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
+    .login-sec h2:after{content:" "; width:100px; height:5px; background:#8b0000; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+    .btn-login{background: #DE6262; color:#fff; font-weight:600;}
+    .banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
+    .banner-text h2{color:#fff; font-weight:600;}
+    .banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
+    .banner-text p{color:#fff;}
+    </style>
+</head>
+  <body class="login-block" >
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center" style="color:#8a0103;">Login Now</h2>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="">
+        @error('email')
+        <span class="text-danger">{{$message}}</span>
+
+        @enderror
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="">
+        @error('password')
+        <span class="text-danger">{{$message}}</span>
+
+        @enderror
+    </div>
+    <div> <small>Dont have an account? <a href="{{route('register')}}" class="fw-bold" style="color:#8b0000;">Sign Up</a></small></div>
+
+        <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input">
+          <small>Remember Me</small>
+        </label>
+        <button type="submit" class="btn btn-login float-right" style="background: #8b0000;">Submit</button>
+      </div>
+
+    </form>
+
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <img class="d-block img-fluid" src="{{asset('assets/vtsa-background.jpeg')}}" alt="First slide">
+
+        </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
